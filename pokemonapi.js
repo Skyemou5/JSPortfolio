@@ -11,7 +11,7 @@ document.getElementById('practice').appendChild( cardDOM )
 
 //card flip----------------
 
-// var card = document.querySelector('.card');
+// var card = document.querySelector('.cardContainer');
 // card.addEventListener( 'click', function() {
 //     // console.log("click")
 //     card.classList.toggle('is-flipped');
@@ -46,16 +46,26 @@ pokemonList.forEach(element => {
     cap.textContent = element.ename
 
     //print on screen?
-    pokeContainer.appendChild(frontCard)
+
+    pokeContainer.appendChild(cardContainer)
+    cardContainer.appendChild(frontCard)
     frontCard.appendChild(fig)
 
     fig.appendChild(img)
     fig.appendChild(cap)
   
-    //back of card-------------
+})
+//back of card-------------------
+pokemonList.forEach(element => {
+    
     let backOfCard = document.createElement('div')
     backOfCard.className = "back"
-
+    let backImg = document.createElement('img')
+    backImg.src = `assets\pokemonStuff\back.png`
+    backImg.className = "backImg"
+    backOfCard.appendChild(cardContainer)
+    backImg.appendChild(backOfCard)
+    
 })
 
 
