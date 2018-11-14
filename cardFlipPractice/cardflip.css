@@ -49,6 +49,8 @@ body { font-family: sans-serif; }
 #myCards {
   display: flex;
   justify-content: space-evenly;
+  perspective: 500px;
+  border: 1px solid black;
 }
 .card {
   display: flex;
@@ -60,13 +62,32 @@ body { font-family: sans-serif; }
   width: 200px;
   height: 200px;
   border-radius: 10px;
+  margin: 5px;
+  /* transform stuff */
+  cursor: pointer;
+  transform: rotateY(0);
+  transform-style: preserve-3d;
+  transition: 400ms;
+
+}
+/* append this class with JS to flip */
+.card.flip {
+  transform: rotateY(180deg);
 }
 .front {
   background-color: red;
   position: absolute;
+  backface-visibility: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
 .back {
+  width: 100%;
+  height: 100%;
   background-color: blue;
   transform: rotateY(180deg);
   backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border-radius: 10px;
 }
