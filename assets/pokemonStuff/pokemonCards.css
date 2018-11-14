@@ -9,7 +9,7 @@ div {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
+    perspective: 600px;
 
 }
 .cardDiv {
@@ -31,12 +31,23 @@ img {
 }
 
 /* Card Flip */
+
+
 .cardContainer {
     background-color: rgba(240, 248, 255, 0);
     border: thin;
     border-color: whitesmoke;
     border-radius: 9px;
+    display: flex;
+    /* transition */
+/* 
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    backface-visibility: hidden; */
 }
+
 .front {
     border: 15px rgb(255, 217, 0) solid;
     background-color: rgb(57, 116, 226);
@@ -60,4 +71,5 @@ img {
     padding: 0;
     border-radius: 9px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.39);
+    
 }
