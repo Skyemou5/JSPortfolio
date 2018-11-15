@@ -48,8 +48,9 @@ body { font-family: sans-serif; }
 /*-------------- My card flip css ---------------*/
 #myCards {
   display: flex;
-  justify-content: space-evenly;
-  perspective: 500px;
+  justify-content: center;
+  flex-wrap: wrap;
+  perspective: 1000px;
   border: 1px solid black;
 }
 .card {

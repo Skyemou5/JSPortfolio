@@ -2,77 +2,55 @@ import { pokemonList } from './assets/pokemonStuff/pokemon.js'
 
 console.log(pokemonList)
 
-//create object for the DOM-------------
-let cardDOM = document.createElement('div')
-cardDOM.className = "cardDiv"
-cardDOM.innerText = "This is a new div"
-//target where to put the DOM object
-document.getElementById('practice').appendChild( cardDOM )
-
-
-
-
-//pokemon set up
-const pokeContainer = document.querySelector('#cards')
-
-//create cards-----------------
-let count = 1
+//--------------create cards----------------
+const container = document.querySelector('#cards')
+let count = 1;
 pokemonList.forEach(element => {
-    //create name for calling the picture files
-    let cardContainer = makeCardFront(element);
+    let card = document.createElement('div')
+    card.className = "card"
+    card.addEventListener('click', ()=>{card.classList.toggle('flip')})  
+    container.appendChild(card)    
+    let front = document.createElement('div')
+    front.className = "front"
+    card.appendChild(front)
+    let back = document.createElement('div')
+    back.className = "back"
+    card.appendChild(back)
 
-    //back of card
-    //makeCardBack(cardContainer);
-  
-})
-
-function makeCardFront(element) {
+    //-----------inside of front of cards
     let numPrefix = count < 10 ? '00' : '0';
-    let imgName = (`${numPrefix}${count++}${element.ename}.png`);
-    //card container
-    let cardContainer = document.createElement('div');
-    cardContainer.className = "cardContainer cardContainer--card";
-    //div for the full card
-    let frontCard = document.createElement('div');
-    frontCard.className = "front";
+    let imgName = (`${numPrefix}${count++}${element.ename}.png`)
     //figure
-    let fig = document.createElement('figure');
+    let fig = document.createElement('figure')
     //figcaption
-    let cap = document.createElement('figcaption');
+    let cap = document.createElement('figcaption')
     //image
-    let img = document.createElement('img');
-    img.src = `pokemonPics/${imgName}`;
+    let img = document.createElement('img')
+    img.src = `pokemonPics/${imgName}`
     //set pokemon name
-    cap.textContent = element.ename;
-    //print on screen?
-    pokeContainer.appendChild(cardContainer);
-    cardContainer.appendChild(frontCard);
-    frontCard.appendChild(fig);
-    fig.appendChild(img);
-    fig.appendChild(cap);
-    return cardContainer;
-}
+    cap.textContent = element.ename
+    front.appendChild(fig)
+    fig.appendChild(img)
+    fig.appendChild(cap)
 
-makeCardBack(cardContainer => {
-    let backOfCard = document.createElement('div');
-    backOfCard.className = "back";
-    let backImg = document.createElement('img');
-    backImg.className = "backImg";
-    backImg.src = '../assets/pokemonStuff/back.png';
-    backOfCard.appendChild(cardContainer);
-    backImg.appendChild(backOfCard);
-})
-//card flip----------------
-//set up
-// let card = document.getElementsByClassName('cardContainer')
-// //click to flip
-// card.addEventListener( 'click', () => {
-//     // console.log("click")
-//     card.classList.toggle('is-flipped');
-// });
+    //----------back of card content
+    let backImg = document.createElement('img')
+    backImg.src = './assets/pokemonStuff/back.png'
+    back.appendChild(backImg)
+}) 
 
 
-// for (i = 0; i < 5; i++) {
-//     let newDiv = document.createElement('div')
-//     newDiv.className = "cardDiv"
-// }
+// let numPrefix = count < 10 ? '00' : '0';
+// let imgName = (`${numPrefix}${count++}${element.ename}.png`);
+// //figure
+// let fig = document.createElement('figure');
+// //figcaption
+// let cap = document.createElement('figcaption');
+// //image
+// let img = document.createElement('img');
+// img.src = `pokemonPics/${imgName}`;
+// //set pokemon name
+// cap.textContent = element.ename;
+// front.appendChild(fig)
+// fig.appendChild(img)
+// fig.appendChild(cap)
