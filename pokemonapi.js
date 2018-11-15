@@ -17,40 +17,42 @@ pokemonList.forEach(element => {
     back.className = "back"
     card.appendChild(back)
 
-    //-----------inside of front of cards
+    //-----------inside of front of cards----------------
     let numPrefix = count < 10 ? '00' : '0';
     let imgName = (`${numPrefix}${count++}${element.ename}.png`)
-    //figure
-    let fig = document.createElement('figure')
-    //figcaption
-    let cap = document.createElement('figcaption')
+    //name
+    let pokeName = document.createElement('h1')
+    pokeName.textContent =element.ename
+    front.appendChild(pokeName)
     //image
-    let img = document.createElement('img')
-    img.src = `pokemonPics/${imgName}`
-    //set pokemon name
-    cap.textContent = element.ename
-    front.appendChild(fig)
-    fig.appendChild(img)
-    fig.appendChild(cap)
+    let frontImg = document.createElement('img')
+    frontImg.src = `pokemonPics/${imgName}`
+    front.appendChild(frontImg)
+    //stats
+    let statBox = document.createElement('div')
+    statBox.className = "statBox"
+    front.appendChild(statBox)
 
-    //----------back of card content
+
+    let hp = document.createElement('p')
+    hp.textContent = "HP " + element.base.HP
+    statBox.appendChild(hp)
+
+    let atk = document.createElement('p')
+    atk.textContent = "Atk " + element.base["Attack"]
+    statBox.appendChild(atk)
+
+    let def = document.createElement('p')
+    def.textContent = "HP " + element.base["Sp.Def"]
+    statBox.appendChild(def)
+
+    // let def = document.createElement('p')
+    // def.textContent = "HP " + element.base["Sp.Def"]
+    // statBox.appendChild(def)
+
+    //----------back of card content-----------------
     let backImg = document.createElement('img')
     backImg.src = './assets/pokemonStuff/back.png'
     back.appendChild(backImg)
-}) 
 
-
-// let numPrefix = count < 10 ? '00' : '0';
-// let imgName = (`${numPrefix}${count++}${element.ename}.png`);
-// //figure
-// let fig = document.createElement('figure');
-// //figcaption
-// let cap = document.createElement('figcaption');
-// //image
-// let img = document.createElement('img');
-// img.src = `pokemonPics/${imgName}`;
-// //set pokemon name
-// cap.textContent = element.ename;
-// front.appendChild(fig)
-// fig.appendChild(img)
-// fig.appendChild(cap)
+})
