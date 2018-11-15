@@ -57,12 +57,13 @@ pokemonList.forEach(element => {
     atkBar.style.width = element.base.Attack + "%"
 
     let atk = document.createElement('p')
-    atk.textContent = "Atk " + element.base["Attack"]
+    atk.textContent = "Atk " + element.base.Attack
     atkBar.appendChild(atk)
 
+    
 
     let def = document.createElement('p')
-    def.textContent = "HP " + element.base["Sp.Def"]
+    def.textContent = "Def " + element.base.Defense
     statBox.appendChild(def)
 
     let spd = document.createElement('p')
