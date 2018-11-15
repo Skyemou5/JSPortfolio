@@ -33,13 +33,33 @@ pokemonList.forEach(element => {
     statBox.className = "statBox"
     front.appendChild(statBox)
 
+
+    let hpParent = document.createElement('div')
+    hpParent.className = "statParent"
+    statBox.appendChild(hpParent)
+
+    let hpBar = document.createElement('div')
+    hpBar.className = "statBar"
+    hpParent.appendChild(hpBar)
+    hpBar.style.width = element.base.HP+"%"
+
     let hp = document.createElement('p')
     hp.textContent = "HP " + element.base.HP
-    statBox.appendChild(hp)
+    hpBar.appendChild(hp)
+
+    let atkParent = document.createElement('div')
+    atkParent.className = "statParent"
+    statBox.appendChild(atkParent)
+
+    let atkBar = document.createElement('div')
+    atkBar.className = "statBar"
+    atkParent.appendChild(atkBar)
+    atkBar.style.width = element.base.Attack + "%"
 
     let atk = document.createElement('p')
     atk.textContent = "Atk " + element.base["Attack"]
-    statBox.appendChild(atk)
+    atkBar.appendChild(atk)
+
 
     let def = document.createElement('p')
     def.textContent = "HP " + element.base["Sp.Def"]
@@ -56,7 +76,9 @@ pokemonList.forEach(element => {
     let copyBtn = document.createElement('button')
     copyBtn.textContent = "Add to Deck"
     back.appendChild(copyBtn)
-    //copyBtn.addEventListener('click', cloneCard())
+    copyBtn.addEventListener('click', (event) => {
+        console.log(event.target.parentNode.parentNode)
+    })
     
 })
 function cloneCard(){
