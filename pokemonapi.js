@@ -56,7 +56,7 @@ pokemonList.forEach(element => {
     let copyBtn = document.createElement('button')
     copyBtn.textContent = "Add to Deck"
     back.appendChild(copyBtn)
-    copyBtn.addEventListener('click', cloneCard())
+    //copyBtn.addEventListener('click', cloneCard())
     
 })
 function cloneCard(){
