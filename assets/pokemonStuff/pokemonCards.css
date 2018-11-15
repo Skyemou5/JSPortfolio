@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Allerta+Stencil|Montserrat|Open+Sans');
 #cards {
     display: flex;
     justify-content: center;
@@ -24,10 +25,6 @@
     transform: rotateY(180deg);
 }
 .front {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-
     box-sizing: border-box;
     background-image: linear-gradient(rgb(182, 222, 255),rgb(32, 88, 243));
     border: 8px solid yellow;
@@ -65,17 +62,41 @@
 .front h1 {
     margin: 0;
     /* position: absolute; */
-    color: rgb(255, 255, 255);
+    color: rgb(0, 89, 116);
+    font-family: 'Allerta Stencil', sans-serif;
 }
 .statBox {
     display: flex;
     flex-direction: column;
     justify-content: left;
     margin-left: 28px;
+    margin-right: 28px;
+    font-family: 'Open Sans', sans-serif;
     /* width: 70%; */
     /* border: 1px solid black; */
 }
 .statBox p {
-    margin: 0;
+    margin: 2px;
     text-align: left;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.back button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgba(226, 226, 226, 0.801);
+    border: 1px solid black;
+    color: rgba(4, 32, 54, 0.856);
+    font-size: 16px;
+    padding: 12px 24px;
+    /* border: none; */
+    cursor: pointer;
+    border-radius: 20px;
+}
+.back button:hover {
+    background-color: rgba(127, 255, 212, 0.342);
+    border: none;
 }

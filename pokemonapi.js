@@ -1,6 +1,6 @@
 import { pokemonList } from './assets/pokemonStuff/pokemon.js'
 
-console.log(pokemonList)
+// console.log(pokemonList)
 
 //--------------create cards----------------
 const container = document.querySelector('#cards')
@@ -33,7 +33,6 @@ pokemonList.forEach(element => {
     statBox.className = "statBox"
     front.appendChild(statBox)
 
-
     let hp = document.createElement('p')
     hp.textContent = "HP " + element.base.HP
     statBox.appendChild(hp)
@@ -46,13 +45,22 @@ pokemonList.forEach(element => {
     def.textContent = "HP " + element.base["Sp.Def"]
     statBox.appendChild(def)
 
-    // let def = document.createElement('p')
-    // def.textContent = "HP " + element.base["Sp.Def"]
-    // statBox.appendChild(def)
+    let spd = document.createElement('p')
+    spd.textContent = "Spd " + element.base.Speed
+    statBox.appendChild(spd)
 
     //----------back of card content-----------------
     let backImg = document.createElement('img')
     backImg.src = './assets/pokemonStuff/back.png'
     back.appendChild(backImg)
-
+    let copyBtn = document.createElement('button')
+    copyBtn.textContent = "Add to Deck"
+    back.appendChild(copyBtn)
+    copyBtn.addEventListener('click', cloneCard())
+    
 })
+function cloneCard(){
+    let getCard = document.getElementsByClassName("card")
+    let clone = getCard.firstElementChild.cloneNode(true)
+    container.appendChild(clone)
+}
