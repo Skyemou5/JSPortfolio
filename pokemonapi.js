@@ -4,6 +4,10 @@ import { pokemonList } from './assets/pokemonStuff/pokemon.js'
 
 //--------------create cards----------------
 const container = document.querySelector('#cards')
+const newDeck = document.getElementById('myDeck')
+let cardCountCont = document.querySelector('#cardCount')
+let cardCount = 0;
+cardCountCont.textContent = "Cards "
 let count = 1;
 pokemonList.forEach(element => {
     let card = document.createElement('div')
@@ -33,7 +37,7 @@ pokemonList.forEach(element => {
     statBox.className = "statBox"
     front.appendChild(statBox)
 
-
+    // ---------HP-----------
     let hpParent = document.createElement('div')
     hpParent.className = "statParent"
     statBox.appendChild(hpParent)
@@ -46,7 +50,7 @@ pokemonList.forEach(element => {
     let hp = document.createElement('p')
     hp.textContent = "HP " + element.base.HP
     hpBar.appendChild(hp)
-
+    //-----------attack------------
     let atkParent = document.createElement('div')
     atkParent.className = "statParent"
     statBox.appendChild(atkParent)
@@ -59,16 +63,32 @@ pokemonList.forEach(element => {
     let atk = document.createElement('p')
     atk.textContent = "Atk " + element.base.Attack
     atkBar.appendChild(atk)
+    //-------------Def--------------
+    let defParent = document.createElement('div')
+    defParent.className = "statParent"
+    statBox.appendChild(defParent)
 
-    
+    let defBar = document.createElement('div')
+    defBar.className = "statBar"
+    defParent.appendChild(defBar)
+    defBar.style.width = element.base.Defense + "%"
 
     let def = document.createElement('p')
     def.textContent = "Def " + element.base.Defense
-    statBox.appendChild(def)
+    defBar.appendChild(def)    
+    //-------------speed-----------
+    let spdParent = document.createElement('div')
+    spdParent.className = "statParent"
+    statBox.appendChild(spdParent)
+
+    let spdBar = document.createElement('div')
+    spdBar.className = "statBar"
+    spdParent.appendChild(spdBar)
+    spdBar.style.width = element.base.Speed + "%"
 
     let spd = document.createElement('p')
     spd.textContent = "Spd " + element.base.Speed
-    statBox.appendChild(spd)
+    spdBar.appendChild(spd)
 
     //----------back of card content-----------------
     let backImg = document.createElement('img')
@@ -78,12 +98,27 @@ pokemonList.forEach(element => {
     copyBtn.textContent = "Add to Deck"
     back.appendChild(copyBtn)
     copyBtn.addEventListener('click', (event) => {
-        console.log(event.target.parentNode.parentNode)
+        cardCount += 1
+        cardCountCont.textContent = "Cards " + cardCount 
+        let cloneCard = event.target.parentNode.parentNode
+        let newCard = cloneCard.cloneNode(true)
+        newCard.classList.toggle('flip')
+        let getButton = newCard.querySelector('button')
+        getButton.textContent = "Remove from Deck"
+            getButton.addEventListener('click', (event) => {
+                cardCount -= 1
+                cardCountCont.textContent = "Cards " + cardCount
+                let getCardRemove = event.target.parentNode.parentNode
+                getCardRemove.parentNode.removeChild(getCardRemove)
+            })
+        console.log(getButton)
+        newCard.addEventListener('click', ()=>{newCard.classList.toggle('flip')})
+        newDeck.appendChild(newCard)
     })
     
 })
-function cloneCard(){
-    let getCard = document.getElementsByClassName("card")
-    let clone = getCard.firstElementChild.cloneNode(true)
-    container.appendChild(clone)
-}
+// function cloneCard(){
+//     let getCard = document.getElementsByClassName("card")
+//     let clone = getCard.firstElementChild.cloneNode(true)
+//     container.appendChild(clone)
+// }

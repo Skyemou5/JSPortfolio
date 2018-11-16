@@ -1,9 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Allerta+Stencil|Montserrat|Open+Sans');
+#cardCount {
+    position: fixed;
+    bottom: 88%;
+    right: 87%;
+    color: rgba(0, 0, 0, 0.521);
+    background-color: rgba(127, 255, 212, 0.562);
+    padding: 5px;
+    border-radius: 5px;
+
+}
 #cards {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    perspective: 1500px;
+    perspective: 3000px;
+    border: 1px solid black;
+}
+#myDeck {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    perspective: 3000px;
     border: 1px solid black;
 }
 .card {
@@ -90,7 +107,7 @@
     border: 1px solid white;
     border-radius: 10px;
     background-color: rgb(158, 52, 52);
-
+    margin: 2px;
 }
 .statBar {
     background-color: green;
