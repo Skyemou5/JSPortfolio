@@ -9,6 +9,8 @@ let cardCountCont = document.querySelector('#cardCount')
 let cardCount = 0;
 cardCountCont.textContent = "Cards "
 let count = 1;
+
+//------------Creates cards with foreach loop-----------
 pokemonList.forEach(element => {
     let card = document.createElement('div')
     card.className = "card"
