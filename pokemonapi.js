@@ -1,14 +1,17 @@
 import { pokemonList } from './assets/pokemonStuff/pokemon.js'
+import { pokeItems } from "./assets/pokemonStuff/items.js"
+import { pokeTypes } from "./assets/pokemonStuff/types.js"
 
-// console.log(pokemonList)
+console.log(pokeItems)
+console.log(pokeTypes)
 
 //--------------create cards----------------
 const container = document.querySelector('#cards')
 const newDeck = document.getElementById('myDeck')
 let cardCountCont = document.querySelector('#cardCount')
-let cardCount = 0;
+let cardCount = 0
 cardCountCont.textContent = "Cards "
-let count = 1;
+let count = 1
 
 //------------Creates cards with foreach loop-----------
 pokemonList.forEach(element => {
@@ -100,6 +103,7 @@ pokemonList.forEach(element => {
     copyBtn.textContent = "Add to Deck"
     back.appendChild(copyBtn)
     copyBtn.addEventListener('click', (event) => {
+
         cardCount += 1
         cardCountCont.textContent = "Cards " + cardCount 
         let cloneCard = event.target.parentNode.parentNode
@@ -108,10 +112,12 @@ pokemonList.forEach(element => {
         let getButton = newCard.querySelector('button')
         getButton.textContent = "Remove from Deck"
             getButton.addEventListener('click', (event) => {
+
                 cardCount -= 1
                 cardCountCont.textContent = "Cards " + cardCount
                 let getCardRemove = event.target.parentNode.parentNode
                 getCardRemove.parentNode.removeChild(getCardRemove)
+
             })
         console.log(getButton)
         newCard.addEventListener('click', ()=>{newCard.classList.toggle('flip')})
@@ -119,8 +125,24 @@ pokemonList.forEach(element => {
     })
     
 })
-// function cloneCard(){
-//     let getCard = document.getElementsByClassName("card")
-//     let clone = getCard.firstElementChild.cloneNode(true)
-//     container.appendChild(clone)
-// }
+function notificationObj() {
+    this.containter = container
+    this.header = header
+    this.message = message
+    this.button = button
+
+}
+if (cardCount === 7) {
+    let notification = document.createElement("div")
+    notification 
+}
+function Pokemon() {
+    this.name = name
+    this.hp = hp
+    this.attack = attack
+    this.defence = defence
+    this.speed = speed
+}
+
+//add card name to array that displays list of cards in deck
+
