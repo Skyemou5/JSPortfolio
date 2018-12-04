@@ -130,19 +130,22 @@ function notificationObj() {
     this.header = header
     this.message = message
     this.button = button
-
+    
 }
 if (cardCount === 7) {
     let notification = document.createElement("div")
-    notification 
+    notificationObj()
 }
-function Pokemon() {
-    this.name = name
-    this.hp = hp
-    this.attack = attack
-    this.defence = defence
-    this.speed = speed
-}
+
+
+
+// function Pokemon() {
+//     this.name = name
+//     this.hp = hp
+//     this.attack = attack
+//     this.defence = defence
+//     this.speed = speed
+// }
 
 //add card name to array that displays list of cards in deck
 
