@@ -27,33 +27,172 @@ cardCollection[21] = 21
 let allPokemon = pokedex
 let randCard = []
 
+let hiHp = Math.max.apply(null, allPokemon)
+console.log(hiHp)
+
+
 let randBtn = document.getElementById("randomize").addEventListener('click', () => {
     // if()
 
     for (let i = 0; i < cardCollection.length; i++) {
         // Print each iteration to the console
-        // console.log(i);
+
         randCard = allPokemon[Math.floor(Math.random() * allPokemon.length)]
-
-        // cardCollection.push(() => {
-
-        // })
         let newRandCard = new pokeCard(randCard.ename, randCard.base.HP, randCard.base.Attack, randCard.base.Defense, randCard.base.Speed, randCard.id)
 
-        console.log(randCard)
-        let printName = document.createElement('div')
-        printName.innerText = newRandCard.name
-        testSection.appendChild(printName)
-        console.log(newRandCard)
-            // console.log("Card array " + cardCollection)
+        cardCollection.fill(newRandCard, 0, 21)
+        console.log(cardCollection)
+            //--- make cards ----
+        let card = document.createElement('div')
+        card.className = "card"
+        card.addEventListener('click', () => { card.classList.toggle('flip') })
+        testSection.appendChild(card)
+        let front = document.createElement('div')
+        front.className = "front"
+        card.appendChild(front)
+        let back = document.createElement('div')
+        back.className = "back"
+        card.appendChild(back)
+            //-----------inside of front of cards----------------
+        let imgName = (`${newRandCard.id}${newRandCard.name}.png`)
+            //name
+        let pokeName = document.createElement('h1')
+        pokeName.textContent = newRandCard.name
+        front.appendChild(pokeName)
+            //image
+        let frontImg = document.createElement('img')
+        frontImg.src = `pokemonPics/${imgName}`
+        front.appendChild(frontImg)
+            //stats
+        let statBox = document.createElement('div')
+        statBox.className = "statBox"
+        front.appendChild(statBox)
+            // ---------HP-----------
+        let hpParent = document.createElement('div')
+        hpParent.className = "statParent"
+        statBox.appendChild(hpParent)
+
+        let hpBar = document.createElement('div')
+        hpBar.className = "statBar"
+        hpParent.appendChild(hpBar)
+        hpBar.style.width = newRandCard.hp + "%"
+
+        let hp = document.createElement('p')
+        hp.textContent = "HP " + newRandCard.hp
+        hpBar.appendChild(hp)
+            //-----------attack------------
+        let atkParent = document.createElement('div')
+        atkParent.className = "statParent"
+        statBox.appendChild(atkParent)
+
+        let atkBar = document.createElement('div')
+        atkBar.className = "statBar"
+        atkParent.appendChild(atkBar)
+        atkBar.style.width = newRandCard.attack + "%"
+
+        let atk = document.createElement('p')
+        atk.textContent = "Atk " + newRandCard.attack
+        atkBar.appendChild(atk)
+            //-------------Def--------------
+        let defParent = document.createElement('div')
+        defParent.className = "statParent"
+        statBox.appendChild(defParent)
+
+        let defBar = document.createElement('div')
+        defBar.className = "statBar"
+        defParent.appendChild(defBar)
+        defBar.style.width = newRandCard.defence + "%"
+
+        let def = document.createElement('p')
+        def.textContent = "Def " + newRandCard.defence
+        defBar.appendChild(def)
+            //-------------speed-----------
+        let spdParent = document.createElement('div')
+        spdParent.className = "statParent"
+        statBox.appendChild(spdParent)
+
+        let spdBar = document.createElement('div')
+        spdBar.className = "statBar"
+        spdParent.appendChild(spdBar)
+        spdBar.style.width = newRandCard.speed + "%"
+
+        let spd = document.createElement('p')
+        spd.textContent = "Spd " + newRandCard.speed
+        spdBar.appendChild(spd)
+            //----------back of card content-----------------
+        let backImg = document.createElement('img')
+        backImg.src = './assets/pokemonStuff/back.png'
+        back.appendChild(backImg)
+        let copyBtn = document.createElement('button')
+        copyBtn.textContent = "Add to Deck"
+        back.appendChild(copyBtn)
+        copyBtn.addEventListener('click', (event) => {
+
+            cardCount += 1
+            cardCountCont.textContent = "Cards " + cardCount
+            let cloneCard = event.target.parentNode.parentNode
+            let newCard = cloneCard.cloneNode(true)
+            newCard.classList.toggle('flip')
+            let getButton = newCard.querySelector('button')
+            getButton.textContent = "Remove from Deck"
+            getButton.addEventListener('click', (event) => {
+
+                    cardCount -= 1
+                    cardCountCont.textContent = "Cards " + cardCount
+                    let getCardRemove = event.target.parentNode.parentNode
+                    getCardRemove.parentNode.removeChild(getCardRemove)
+
+                })
+                // console.log(getButton)
+            newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
+            newDeck.appendChild(newCard)
+        })
     }
 })
 
 
-//-----------------practice random stuff-----------------
+
 // for (let i = 0; i < cardCollection.length; i++) {
+//     // Print each iteration to the console
+//     // console.log(i);
+
 
 //     //--- make cards ----
+//     let card = document.createElement('div')
+//     card.className = "card"
+//     card.addEventListener('click', () => { card.classList.toggle('flip') })
+//     testSection.appendChild(card)
+//     let front = document.createElement('div')
+//     front.className = "front"
+//     card.appendChild(front)
+//     let back = document.createElement('div')
+//     back.className = "back"
+//     card.appendChild(back)
+//         //-----------inside of front of cards----------------
+//         // let numPrefix = count < 10 ? '00' : '0';
+//     let imgName = (`${newRandCard.id}${newRandCard.name}.png`)
+//         //name
+//     let pokeName = document.createElement('h1')
+//     pokeName.textContent = newRandCard.name
+//     front.appendChild(pokeName)
+//         //image
+//     let frontImg = document.createElement('img')
+//     frontImg.src = `pokemonPics/${imgName}`
+//     front.appendChild(frontImg)
+//         //stats
+//     let statBox = document.createElement('div')
+//     statBox.className = "statBox"
+//     front.appendChild(statBox)
+
+
+// }
+
+
+
+
+//------------Creates cards with foreach loop-----------
+
+// pokemonList.forEach(element => {
 //     let card = document.createElement('div')
 //     card.className = "card"
 //     card.addEventListener('click', () => { card.classList.toggle('flip') })
@@ -162,162 +301,4 @@ let randBtn = document.getElementById("randomize").addEventListener('click', () 
 //         newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
 //         newDeck.appendChild(newCard)
 //     })
-// }
-
-
-
-
-// for (let i = 0; i < 21; i++) {
-//     // Print each iteration to the console
-//     console.log(i);
-//     randCard = allPokemon[Math.floor(Math.random() * allPokemon.length)]
-//     let newRandCard = new pokeCard(randCard.ename, randCard.base.HP, randCard.base.Attack, randCard.base.Defense, randCard.base.Speed)
-//     let printName = document.createElement('div')
-//     printName.innerText = newRandCard.name
-//     testSection.appendChild(printName)
-//     console.log(newRandCard)
-// }
-
-// "Attack": 49,
-// "Defense": 49,
-// "HP": 45,
-// "Sp.Atk": 65,
-// "Sp.Def": 65,
-// "Speed": 45
-
-//------------Creates cards with foreach loop-----------
-
-pokemonList.forEach(element => {
-    let card = document.createElement('div')
-    card.className = "card"
-    card.addEventListener('click', () => { card.classList.toggle('flip') })
-    container.appendChild(card)
-    let front = document.createElement('div')
-    front.className = "front"
-    card.appendChild(front)
-    let back = document.createElement('div')
-    back.className = "back"
-    card.appendChild(back)
-
-    //-----------inside of front of cards----------------
-    let numPrefix = count < 10 ? '00' : '0';
-    let imgName = (`${numPrefix}${count++}${element.ename}.png`)
-        //name
-    let pokeName = document.createElement('h1')
-    pokeName.textContent = element.ename
-    front.appendChild(pokeName)
-        //image
-    let frontImg = document.createElement('img')
-    frontImg.src = `pokemonPics/${imgName}`
-    front.appendChild(frontImg)
-        //stats
-    let statBox = document.createElement('div')
-    statBox.className = "statBox"
-    front.appendChild(statBox)
-
-    // ---------HP-----------
-    let hpParent = document.createElement('div')
-    hpParent.className = "statParent"
-    statBox.appendChild(hpParent)
-
-    let hpBar = document.createElement('div')
-    hpBar.className = "statBar"
-    hpParent.appendChild(hpBar)
-    hpBar.style.width = element.base.HP + "%"
-
-    let hp = document.createElement('p')
-    hp.textContent = "HP " + element.base.HP
-    hpBar.appendChild(hp)
-        //-----------attack------------
-    let atkParent = document.createElement('div')
-    atkParent.className = "statParent"
-    statBox.appendChild(atkParent)
-
-    let atkBar = document.createElement('div')
-    atkBar.className = "statBar"
-    atkParent.appendChild(atkBar)
-    atkBar.style.width = element.base.Attack + "%"
-
-    let atk = document.createElement('p')
-    atk.textContent = "Atk " + element.base.Attack
-    atkBar.appendChild(atk)
-        //-------------Def--------------
-    let defParent = document.createElement('div')
-    defParent.className = "statParent"
-    statBox.appendChild(defParent)
-
-    let defBar = document.createElement('div')
-    defBar.className = "statBar"
-    defParent.appendChild(defBar)
-    defBar.style.width = element.base.Defense + "%"
-
-    let def = document.createElement('p')
-    def.textContent = "Def " + element.base.Defense
-    defBar.appendChild(def)
-        //-------------speed-----------
-    let spdParent = document.createElement('div')
-    spdParent.className = "statParent"
-    statBox.appendChild(spdParent)
-
-    let spdBar = document.createElement('div')
-    spdBar.className = "statBar"
-    spdParent.appendChild(spdBar)
-    spdBar.style.width = element.base.Speed + "%"
-
-    let spd = document.createElement('p')
-    spd.textContent = "Spd " + element.base.Speed
-    spdBar.appendChild(spd)
-
-    //----------back of card content-----------------
-    let backImg = document.createElement('img')
-    backImg.src = './assets/pokemonStuff/back.png'
-    back.appendChild(backImg)
-    let copyBtn = document.createElement('button')
-    copyBtn.textContent = "Add to Deck"
-    back.appendChild(copyBtn)
-    copyBtn.addEventListener('click', (event) => {
-
-        cardCount += 1
-        cardCountCont.textContent = "Cards " + cardCount
-        let cloneCard = event.target.parentNode.parentNode
-        let newCard = cloneCard.cloneNode(true)
-        newCard.classList.toggle('flip')
-        let getButton = newCard.querySelector('button')
-        getButton.textContent = "Remove from Deck"
-        getButton.addEventListener('click', (event) => {
-
-                cardCount -= 1
-                cardCountCont.textContent = "Cards " + cardCount
-                let getCardRemove = event.target.parentNode.parentNode
-                getCardRemove.parentNode.removeChild(getCardRemove)
-
-            })
-            // console.log(getButton)
-        newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
-        newDeck.appendChild(newCard)
-    })
-})
-
-// function notificationObj() {
-//     this.containter = container
-//     this.header = header
-//     this.message = message
-//     this.button = button
-
-// }
-// if (cardCount === 7) {
-//     let notification = document.createElement("div")
-//     notificationObj()
-// }
-
-
-
-// function Pokemon() {
-//     this.name = name
-//     this.hp = hp
-//     this.attack = attack
-//     this.defence = defence
-//     this.speed = speed
-// }
-
-//add card name to array that displays list of cards in deck
+// })
