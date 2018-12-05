@@ -56,6 +56,11 @@ body {
 #test {
     display: flex;
     background-color: #1DC299;
+    justify-content: space-between;
+}
+
+#test div {
+    padding: 5px;
 }
 
 
