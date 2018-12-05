@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Yanone+Kaffeesatz');
+:root {
+    /* VARS */
+    /* COLORS */
+    --mainColor: #2C6AC4;
+    --secondaryColor: #1DC299;
+    --secondaryColor2: #4D34CA;
+    --compColor: #FFAF26;
+    /* text vars */
+    --textColor1: rgb(201, 201, 201);
+    /* FONTS */
+    --font1: Montserrat;
+    --font2: Yanone;
+    --font3: Kaffeesatz;
+}
+
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--mainColor);
+    color: var(--textColor1);
+}
+
+
+/* NAV */
+
+#navbar {
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    background-color: var(--secondaryColor);
+    font-family: var(--font1);
+}
+
+.navButton {
+    /* background-color: var(--secondaryColor2); */
+    /* margin: 1em; */
+}
+
+.navButton a {
+    color: antiquewhite;
+    display: flex;
+    justify-content: right;
+    /* background-color: var(--secondaryColor); */
+    text-decoration: none;
+    padding: 1em;
+    border-radius: 5px;
+}

@@ -1,27 +1,7 @@
 import { pokemonList } from './assets/pokemonStuff/pokemon.js'
-import { pokeItems } from "./assets/pokemonStuff/items.js"
-import { pokeTypes } from "./assets/pokemonStuff/types.js"
-import { pokedex } from "./assets/pokemonStuff/pokedex.js"
-// call api fetch
-
-const pokeUrl = 'https://cors-anywhere.herokuapp.com/https://pokeapi.co/pokemon'
-fetch(pokeUrl)
-    .then(res => res.json())
-    .then(pokemon => console.log(posts))
-
-// console.log(pokeItems)
-// console.log(pokeTypes)
-// ---------- filter ------------
-
-
-// ------ create and append functions-----
-function createNode(element) {
-    return document.createElement(element)
-}
-
-function append(parent, el) {
-    return parent.appendChild(el)
-}
+// import { pokeItems } from "./assets/pokemonStuff/items.js"
+// import { pokeTypes } from "./assets/pokemonStuff/types.js"
+// import { pokedex } from "./assets/pokemonStuff/pokedex.js"
 
 
 //--------------create cards----------------
@@ -33,6 +13,7 @@ cardCountCont.textContent = "Cards "
 let count = 1
 
 //------------Creates cards with foreach loop-----------
+
 pokemonList.forEach(element => {
     let card = document.createElement('div')
     card.className = "card"
@@ -142,7 +123,6 @@ pokemonList.forEach(element => {
         newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
         newDeck.appendChild(newCard)
     })
-
 })
 
 function notificationObj() {
