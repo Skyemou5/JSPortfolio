@@ -1,22 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Slabo+27px|Yanone+Kaffeesatz');
-
-:root {    
+:root {
     /* VARS */
-
     /* COLORS */
-    --mainColor:#2C6AC4;
+    --mainColor: #2C6AC4;
     --secondaryColor: #1DC299;
     --secondaryColor2: #4D34CA;
     --compColor: #FFAF26;
-
     /* text vars */
     --textColor1: rgb(201, 201, 201);
-
     /* FONTS */
     --font1: Montserrat;
     --font2: Yanone;
     --font3: Kaffeesatz;
 }
+
 body {
     margin: 0 auto;
     display: flex;
@@ -24,9 +21,12 @@ body {
     justify-content: center;
     text-align: center;
     background-color: var(--mainColor);
-    color: var(--textColor1);    
+    color: var(--textColor1);
 }
+
+
 /* NAV */
+
 #navbar {
     display: flex;
     justify-content: flex-end;
@@ -34,10 +34,12 @@ body {
     background-color: var(--secondaryColor);
     font-family: var(--font1);
 }
+
 .navButton {
     /* background-color: var(--secondaryColor2); */
     /* margin: 1em; */
 }
+
 .navButton a {
     color: antiquewhite;
     display: flex;
@@ -48,47 +50,73 @@ body {
     border-radius: 5px;
 }
 
+
+/* Button stuff */
+
+#test {
+    display: flex;
+    background-color: #1DC299;
+}
+
+
 /* Welcome Section */
+
 #welcome-section {
     font-family: var(--font1);
 }
+
+
 /* Profile Card */
+
 .profile-card {
     font-family: var(--font1);
     display: flex;
     flex-direction: row;
     background-color: #4D34CA;
 }
+
 .profile-card img {
     width: 15em;
 }
+
 .profile-descript {
     display: flex;
     flex-direction: column;
     justify-content: space-around
 }
+
+
 /* #profile-skills {
     display: flex;
     justify-content: center;
 } */
 
+
 /* Projects */
+
 #projects {
     display: flex;
     justify-content: space-around;
     margin: 2em;
 }
+
 .project-block {
     /* background-color: rgb(172, 172, 172); */
     width: 100px;
     height: 200px;
 }
+
 .project-pics {
     width: 90px;
 }
 
+
 /* Javascript stuff */
+
+
 /* Card flip */
+
+
 /* .scene {
     width: 200px;
     height: 260px;
@@ -96,23 +124,23 @@ body {
     margin: 40px 0;
     perspective: 600px;
     border-radius: 10px;
-   
+
   }
-  
+
   .card {
     width: 100%;
     height: 100%;
     transition: transform 1s;
     transform-style: preserve-3d;
     cursor: pointer;
-    position: relative;  
-    
+    position: relative;
+
   }
-  
+
   .card.is-flipped {
     transform: rotateY(180deg);
   }
-  
+
   .card__face {
     position: absolute;
     width: 100%;
@@ -126,76 +154,78 @@ body {
     border-radius: 10px;
     box-shadow:  4px, 4px, rgb(0, 0, 0);
   }
-  
+
   .card__face--front {
     background: red;
-    
+
   }
-  
+
   .card__face--back {
     background: blue;
     transform: rotateY(180deg);
-    
+
   } */
 
 
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-/* Styles */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */
 }
+
 
 /* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-/* Styles */
+
+@media only screen and (min-width: 321px) {
+    /* Styles */
 }
+
 
 /* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-/* Styles */
+
+@media only screen and (max-width: 320px) {
+    /* Styles */
 }
+
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-/* Styles */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
 }
+
 
 /* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-/* Styles */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Styles */
 }
+
 
 /* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-/* Styles */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* Styles */
 }
+
 
 /* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1224px) {
-/* Styles */
+
+@media only screen and (min-width: 1224px) {
+    /* Styles */
 }
+
 
 /* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
-/* Styles */
+
+@media only screen and (min-width: 1824px) {
+    /* Styles */
 }
 
+
 /* iPhone 4 ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-/* Styles */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+    /* Styles */
 }

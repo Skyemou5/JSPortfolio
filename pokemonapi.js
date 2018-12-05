@@ -1,9 +1,7 @@
 import { pokemonList } from './assets/pokemonStuff/pokemon.js'
-// import { pokeItems } from "./assets/pokemonStuff/items.js"
-// import { pokeTypes } from "./assets/pokemonStuff/types.js"
-// import { pokedex } from "./assets/pokemonStuff/pokedex.js"
-
-
+import { pokeItems } from "./assets/pokemonStuff/items.js"
+import { pokeTypes } from "./assets/pokemonStuff/types.js"
+import { pokedex } from "./assets/pokemonStuff/pokedex.js"
 //--------------create cards----------------
 const container = document.querySelector('#cards')
 const newDeck = document.getElementById('myDeck')
@@ -11,6 +9,37 @@ let cardCountCont = document.querySelector('#cardCount')
 let cardCount = 0
 cardCountCont.textContent = "Cards "
 let count = 1
+
+//-----randomize-----
+const testSection = document.getElementById('test')
+
+function pokeCard(name, hp, attack, defence, speed) {
+    this.name = name,
+        this.hp = hp,
+        this.attack = attack,
+        this.defence = defence,
+        this.speed = speed
+}
+let allPokemon = pokedex
+let randCard = Array
+let randBtn = document.getElementById("randomize").addEventListener('click', () => {
+    // console.log(allPokemon[Math.floor(Math.random() * allPokemon.length)])
+    randCard = allPokemon[Math.floor(Math.random() * allPokemon.length)]
+        // console.log(randCard)
+    let newRandCard = new pokeCard(randCard.ename, randCard.base.HP, randCard.base.Attack, randCard.base.Defense, randCard.base.Speed)
+    let nameBox = document.createElement('p')
+    nameBox.className = "test-info"
+    nameBox.textContent = "hello"
+    nameBox.appendChild(testSection)
+    console.log(newRandCard)
+})
+
+// "Attack": 49,
+// "Defense": 49,
+// "HP": 45,
+// "Sp.Atk": 65,
+// "Sp.Def": 65,
+// "Speed": 45
 
 //------------Creates cards with foreach loop-----------
 
@@ -113,29 +142,29 @@ pokemonList.forEach(element => {
         getButton.textContent = "Remove from Deck"
         getButton.addEventListener('click', (event) => {
 
-            cardCount -= 1
-            cardCountCont.textContent = "Cards " + cardCount
-            let getCardRemove = event.target.parentNode.parentNode
-            getCardRemove.parentNode.removeChild(getCardRemove)
+                cardCount -= 1
+                cardCountCont.textContent = "Cards " + cardCount
+                let getCardRemove = event.target.parentNode.parentNode
+                getCardRemove.parentNode.removeChild(getCardRemove)
 
-        })
-        console.log(getButton)
+            })
+            // console.log(getButton)
         newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
         newDeck.appendChild(newCard)
     })
 })
 
-function notificationObj() {
-    this.containter = container
-    this.header = header
-    this.message = message
-    this.button = button
+// function notificationObj() {
+//     this.containter = container
+//     this.header = header
+//     this.message = message
+//     this.button = button
 
-}
-if (cardCount === 7) {
-    let notification = document.createElement("div")
-    notificationObj()
-}
+// }
+// if (cardCount === 7) {
+//     let notification = document.createElement("div")
+//     notificationObj()
+// }
 
 
 
