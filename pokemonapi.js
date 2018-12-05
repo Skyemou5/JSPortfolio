@@ -1,9 +1,28 @@
 import { pokemonList } from './assets/pokemonStuff/pokemon.js'
 import { pokeItems } from "./assets/pokemonStuff/items.js"
 import { pokeTypes } from "./assets/pokemonStuff/types.js"
+import { pokedex } from "./assets/pokemonStuff/pokedex.js"
+// call api fetch
 
-console.log(pokeItems)
-console.log(pokeTypes)
+const pokeUrl = 'https://cors-anywhere.herokuapp.com/https://pokeapi.co/pokemon'
+fetch(pokeUrl)
+    .then(res => res.json())
+    .then(pokemon => console.log(posts))
+
+// console.log(pokeItems)
+// console.log(pokeTypes)
+// ---------- filter ------------
+
+
+// ------ create and append functions-----
+function createNode(element) {
+    return document.createElement(element)
+}
+
+function append(parent, el) {
+    return parent.appendChild(el)
+}
+
 
 //--------------create cards----------------
 const container = document.querySelector('#cards')
@@ -17,8 +36,8 @@ let count = 1
 pokemonList.forEach(element => {
     let card = document.createElement('div')
     card.className = "card"
-    card.addEventListener('click', ()=>{card.classList.toggle('flip')})  
-    container.appendChild(card)    
+    card.addEventListener('click', () => { card.classList.toggle('flip') })
+    container.appendChild(card)
     let front = document.createElement('div')
     front.className = "front"
     card.appendChild(front)
@@ -29,15 +48,15 @@ pokemonList.forEach(element => {
     //-----------inside of front of cards----------------
     let numPrefix = count < 10 ? '00' : '0';
     let imgName = (`${numPrefix}${count++}${element.ename}.png`)
-    //name
+        //name
     let pokeName = document.createElement('h1')
-    pokeName.textContent =element.ename
+    pokeName.textContent = element.ename
     front.appendChild(pokeName)
-    //image
+        //image
     let frontImg = document.createElement('img')
     frontImg.src = `pokemonPics/${imgName}`
     front.appendChild(frontImg)
-    //stats
+        //stats
     let statBox = document.createElement('div')
     statBox.className = "statBox"
     front.appendChild(statBox)
@@ -50,12 +69,12 @@ pokemonList.forEach(element => {
     let hpBar = document.createElement('div')
     hpBar.className = "statBar"
     hpParent.appendChild(hpBar)
-    hpBar.style.width = element.base.HP+"%"
+    hpBar.style.width = element.base.HP + "%"
 
     let hp = document.createElement('p')
     hp.textContent = "HP " + element.base.HP
     hpBar.appendChild(hp)
-    //-----------attack------------
+        //-----------attack------------
     let atkParent = document.createElement('div')
     atkParent.className = "statParent"
     statBox.appendChild(atkParent)
@@ -68,7 +87,7 @@ pokemonList.forEach(element => {
     let atk = document.createElement('p')
     atk.textContent = "Atk " + element.base.Attack
     atkBar.appendChild(atk)
-    //-------------Def--------------
+        //-------------Def--------------
     let defParent = document.createElement('div')
     defParent.className = "statParent"
     statBox.appendChild(defParent)
@@ -80,8 +99,8 @@ pokemonList.forEach(element => {
 
     let def = document.createElement('p')
     def.textContent = "Def " + element.base.Defense
-    defBar.appendChild(def)    
-    //-------------speed-----------
+    defBar.appendChild(def)
+        //-------------speed-----------
     let spdParent = document.createElement('div')
     spdParent.className = "statParent"
     statBox.appendChild(spdParent)
@@ -105,32 +124,33 @@ pokemonList.forEach(element => {
     copyBtn.addEventListener('click', (event) => {
 
         cardCount += 1
-        cardCountCont.textContent = "Cards " + cardCount 
+        cardCountCont.textContent = "Cards " + cardCount
         let cloneCard = event.target.parentNode.parentNode
         let newCard = cloneCard.cloneNode(true)
         newCard.classList.toggle('flip')
         let getButton = newCard.querySelector('button')
         getButton.textContent = "Remove from Deck"
-            getButton.addEventListener('click', (event) => {
+        getButton.addEventListener('click', (event) => {
 
-                cardCount -= 1
-                cardCountCont.textContent = "Cards " + cardCount
-                let getCardRemove = event.target.parentNode.parentNode
-                getCardRemove.parentNode.removeChild(getCardRemove)
+            cardCount -= 1
+            cardCountCont.textContent = "Cards " + cardCount
+            let getCardRemove = event.target.parentNode.parentNode
+            getCardRemove.parentNode.removeChild(getCardRemove)
 
-            })
+        })
         console.log(getButton)
-        newCard.addEventListener('click', ()=>{newCard.classList.toggle('flip')})
+        newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
         newDeck.appendChild(newCard)
     })
-    
+
 })
+
 function notificationObj() {
     this.containter = container
     this.header = header
     this.message = message
     this.button = button
-    
+
 }
 if (cardCount === 7) {
     let notification = document.createElement("div")
@@ -148,4 +168,3 @@ if (cardCount === 7) {
 // }
 
 //add card name to array that displays list of cards in deck
-
