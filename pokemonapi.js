@@ -21,26 +21,31 @@ function pokeCard(name, hp, attack, defence, speed, id) {
         this.speed = speed,
         this.id = id
 }
-let cardCollection = []
-cardCollection[21] = 21
 
-let allPokemon = pokedex
-let randCard = []
+// cardCollection[21] = 21
 
-let hiHp = Math.max.apply(null, allPokemon)
-console.log(hiHp)
+// let allPokemon = pokedex
+// let randCard = []
+
+// let hiHp = Math.max.apply(null, allPokemon)
+// console.log(hiHp)
 
 
 let randBtn = document.getElementById("randomize").addEventListener('click', () => {
-    // if()
-
-    for (let i = 0; i < cardCollection.length; i++) {
+    // set up a new, empty array every time user clicks to randomize
+    let cardCollection = []
+    // this loop will empty out all of the cards that have been 
+    // added to the testSection element in the DOM
+    while (testSection.firstChild) {
+        testSection.removeChild(testSection.firstChild);
+    }
+    // we always want a set of 20 randomly selected cards available
+    for (let i = 0; i < 20; i++) {
         // Print each iteration to the console
-
-        randCard = allPokemon[Math.floor(Math.random() * allPokemon.length)]
+        let randCard = pokedex[Math.floor(Math.random() * pokedex.length)]
         let newRandCard = new pokeCard(randCard.ename, randCard.base.HP, randCard.base.Attack, randCard.base.Defense, randCard.base.Speed, randCard.id)
 
-        cardCollection.fill(newRandCard, 0, 21)
+        cardCollection.push(newRandCard)
         console.log(cardCollection)
             //--- make cards ----
         let card = document.createElement('div')
