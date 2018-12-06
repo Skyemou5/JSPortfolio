@@ -6,75 +6,27 @@ import { pokedex } from "./assets/pokemonStuff/pokedex.js"
 const container = document.querySelector('#cards')
 const newDeck = document.getElementById('myDeck')
 let cardCountCont = document.querySelector('#cardCount')
-let cardNameList = document.querySelector('#cardNames')
 let cardCount = 0
 cardCountCont.textContent = "Cards "
 let count = 1
-    //-----filter-----
-    // let pokeAll = pokedex
-    // let isGrass = function(pokeAll) {
-    //     return pokeAll.type === \u8349
-    // }
-
-// let grassType = pokedex.filter(isGrass)
-// console.log(grassType)
-// console.log(pokedex.filter(() => {
-//     return pokedex.type["\u8349"]
-// }))
-
-
-// let someArray = [1, 2, 4, 6, 2, 6, 7, 3, 9, 7, 10, 11, 1, 44, 66,
-//     {
-//         "base": {
-//             "Attack": 49,
-//             "Defense": 49,
-//             "HP": 45,
-//             "Sp.Atk": 65,
-//             "Sp.Def": 65,
-//             "Speed": 45
-//         },
-//         "type": [
-//             "\u8349",
-//             "\u6bd2"
-//         ]
-
-//     }
-// ]
-
-// let result = someArray.filter(function(val) {
-//     return type == "\u8349"
-// })
-// console.log(result)
 
 //-----randomize-----
 const testSection = document.getElementById('test')
 
-function pokeCard(name, hp, attack, defence, speed, id, type) {
+function pokeCard(name, hp, attack, defence, speed, id) {
     this.name = name,
         this.hp = hp,
         this.attack = attack,
         this.defence = defence,
         this.speed = speed,
-        this.id = id,
-        this.type = type
+        this.id = id
 }
 
-// cardCollection[21] = 21
 
-// let allPokemon = pokedex
-// let randCard = []
-
-// let hiHp = Math.max.apply(null, allPokemon)
-// console.log(hiHp)
-
-//do you have anything you could make an if statement into?
-//im
 
 let randBtn = document.getElementById("randomize").addEventListener('click', () => {
     // set up a new, empty array every time user clicks to randomize
     let cardCollection = []
-        //
-    console.log(cardCollection)
         // this loop will empty out all of the cards that have been
         // added to the testSection element in the DOM
     while (testSection.firstChild) {
@@ -103,7 +55,6 @@ let randBtn = document.getElementById("randomize").addEventListener('click', () 
         let imgName = (`${newRandCard.id}${newRandCard.name}.png`)
             //name
         let pokeName = document.createElement('h1')
-        pokeName.className = "pokeName"
         pokeName.textContent = newRandCard.name
         front.appendChild(pokeName)
             //image
@@ -173,33 +124,21 @@ let randBtn = document.getElementById("randomize").addEventListener('click', () 
         let copyBtn = document.createElement('button')
         copyBtn.textContent = "Add to Deck"
         back.appendChild(copyBtn)
-            //----------add cards to deck-----------
         copyBtn.addEventListener('click', (event) => {
 
-                cardCount += 1
-                cardCountCont.textContent = "Cards " + cardCount
-                let cloneCard = event.target.parentNode.parentNode
-                let newCard = cloneCard.cloneNode(true)
-                    //--------card name stuff
-                    // let cardName = newCard.querySelector('h1').textContent
-                    // console.log(cardName)
-                    // let cardNameItem = document.createElement('li')
-                    // cardNameItem.textContent = cardName
-                    // cardNameItem.id = cardName
-                    // cardCountCont.appendChild(cardNameList)
-                    // cardNameList.appendChild(cardNameItem)
-                    // console.log(cardNameList)
+            cardCount += 1
+            cardCountCont.textContent = "Cards " + cardCount
+            let cloneCard = event.target.parentNode.parentNode
+            let newCard = cloneCard.cloneNode(true)
+            newCard.classList.toggle('flip')
+            let getButton = newCard.querySelector('button')
+            getButton.textContent = "Remove from Deck"
+            getButton.addEventListener('click', (event) => {
 
-                // ----- new card ----
-                newCard.classList.toggle('flip')
-                let getButton = newCard.querySelector('button')
-                getButton.textContent = "Remove from Deck"
-                getButton.addEventListener('click', (event) => {
-                    //-----------remove cards from deck---------------
                     cardCount -= 1
                     cardCountCont.textContent = "Cards " + cardCount
-                        //---- get card node ----
                     let getCardRemove = event.target.parentNode.parentNode
+                    getCardRemove.parentNode.removeChild(getCardRemove)
 
                 })
                 // console.log(getButton)
