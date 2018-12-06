@@ -30,10 +30,14 @@ function pokeCard(name, hp, attack, defence, speed, id) {
 // let hiHp = Math.max.apply(null, allPokemon)
 // console.log(hiHp)
 
+//do you have anything you could make an if statement into?
+//im
 
 let randBtn = document.getElementById("randomize").addEventListener('click', () => {
     // set up a new, empty array every time user clicks to randomize
     let cardCollection = []
+        //
+    console.log(cardCollection)
         // this loop will empty out all of the cards that have been
         // added to the testSection element in the DOM
     while (testSection.firstChild) {
