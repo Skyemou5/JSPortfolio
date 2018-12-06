@@ -58,30 +58,36 @@ function pokeCard(name, hp, attack, defence, speed, id, type) {
         this.id = id,
         this.type = type
 }
-let cardCollection = []
-let cardAmount = 2
-cardCollection[cardAmount] = cardAmount
 
-let allPokemon = pokedex
-let randCard = []
+// cardCollection[21] = 21
 
-let hiHp = Math.max.apply(null, allPokemon)
-console.log(hiHp)
+// let allPokemon = pokedex
+// let randCard = []
 
+// let hiHp = Math.max.apply(null, allPokemon)
+// console.log(hiHp)
+
+//do you have anything you could make an if statement into?
+//im
 
 let randBtn = document.getElementById("randomize").addEventListener('click', () => {
-    // if (document.contains(getElementsByClassName("card"))) {
-    //     document.getElementsByClassName("card").remove()
-    // } else {
-
-    for (let i = 0; i < cardCollection.length; i++) {
+    // set up a new, empty array every time user clicks to randomize
+    let cardCollection = []
+        //
+    console.log(cardCollection)
+        // this loop will empty out all of the cards that have been
+        // added to the testSection element in the DOM
+    while (testSection.firstChild) {
+        testSection.removeChild(testSection.firstChild);
+    }
+    // we always want a set of 20 randomly selected cards available
+    for (let i = 0; i < 20; i++) {
         // Print each iteration to the console
+        let randCard = pokedex[Math.floor(Math.random() * pokedex.length)]
+        let newRandCard = new pokeCard(randCard.ename, randCard.base.HP, randCard.base.Attack, randCard.base.Defense, randCard.base.Speed, randCard.id)
 
-        randCard = allPokemon[Math.floor(Math.random() * allPokemon.length)]
-        let newRandCard = new pokeCard(randCard.ename, randCard.base.HP, randCard.base.Attack, randCard.base.Defense, randCard.base.Speed, randCard.id, randCard.type)
-
-        // cardCollection.fill(newRandCard, 0, 21)
-        console.log(newRandCard)
+        cardCollection.push(newRandCard)
+        console.log(cardCollection)
             //--- make cards ----
         let card = document.createElement('div')
         card.className = "card"
@@ -195,24 +201,10 @@ let randBtn = document.getElementById("randomize").addEventListener('click', () 
                         //---- get card node ----
                     let getCardRemove = event.target.parentNode.parentNode
 
-                    //---------name stuff ---------
-                    // console.log(getCardRemove)
-                    // let cardRemoveName = getCardRemove.querySelector('h1').textContent
-                    // console.log(cardRemoveName)
-                    // let listId = document.getElementById(cardRemoveName)
-                    // console.log(listId)
-                    // cardNameList.removeChild(listId)
-
-                    //-----remove card-----
-                    getCardRemove.parentNode.removeChild(getCardRemove)
-
-
-
                 })
-                newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
-                newDeck.appendChild(newCard)
-                newCard.className = "newCard"
-            })
-            //}
+                // console.log(getButton)
+            newCard.addEventListener('click', () => { newCard.classList.toggle('flip') })
+            newDeck.appendChild(newCard)
+        })
     }
 })
