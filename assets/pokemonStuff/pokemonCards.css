@@ -9,6 +9,28 @@
     border-radius: 5px;
 }
 
+#Buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px;
+}
+
+.Sort-Buttons {
+    border: none;
+    background-color: aquamarine;
+    padding: 3px;
+    cursor: pointer;
+    color: black;
+    padding: 5px;
+    margin: 2px;
+}
+
+.Sort-Buttons:hover {
+    background-color: beige;
+}
+
 #cards {
     display: flex;
     justify-content: center;
