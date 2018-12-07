@@ -5,7 +5,6 @@ https://benshurts.com/
 #Has a good UI that utilizes proper, basic HTML, CSS and Flexbox
 flex box is on both home and javascript page.
 
-#Provides examples of Basic JavaScript code including:
 #Proper use of variables with proper scope
 Global and local variables are used in the pokemoncard generator
 
